@@ -31,14 +31,12 @@ PM_START_TEXT = """
 Hello    {}, My Name Is {} !
 
 I am a group management bot With Some Special Features.
-To add me to your group click ["HERE"](t.me/Anierobot?startgroup=botstart)
+To add me to your group click ["HERE"](t.me/=CyberXManagerbot?startgroup=botstart)
 You can find my list of available commands with /help.
  
-See [Basic Configuration Checklist](t.me/Anienews/3) on how to secure your group.
-The support group chat is at [Anie Support](t.me/aniesupport).
+The support group chat is at [Anie Support](t.me/cybermanaging).
 
-The Source Of The Bot is [Here](https://github.com/Avishekbhattacharjee/Anie-Robot/)
-
+The Source Of The Bot is [Here](https://github.com/AnonymousLord8/CyberManaging/)
 
 """
 
