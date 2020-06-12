@@ -51,14 +51,14 @@ def gkick(bot: Bot, update: Update, args: List[str]):
         message.reply_text("You don't seem to be referring to a user.")
         return
     if int(user_id) in SUDO_USERS or int(user_id) in SUPPORT_USERS:
-        message.reply_text("OHHH! Someone's trying to gkick a sudo/support user! *Grabs popcorn*")
+        message.reply_text("OHHH! Someone's trying to GKick a sudo/support user! *Grabs popcorn*")
         return
     if int(user_id) == OWNER_ID:
         message.reply_text("Wow! Someone's so noob that he want to gkick my owner! *Grabs Potato Chips*")
         return
         
     if user_id == bot.id:
-        message.reply_text("Welp, I'm not gonna to gkick myself!")
+        message.reply_text("Welp, I'm not gonna to GKick myself!")
         return    
 
     chats = get_all_chats()
