@@ -36,8 +36,6 @@ You can find my list of available commands with /help.
  
 The support group chat is at [Anie Support](t.me/cybermanaging).
 
-The Source Of The Bot is [Here](https://github.com/AnonymousLord8/CyberManaging/)
-
 """
 
 HELP_STRINGS = """
@@ -151,7 +149,7 @@ def start(bot: Bot, update: Update, args: List[str]):
 
 
     else:
-        update.effective_message.reply_text("Yo, whadup?🤧")
+        update.effective_message.reply_text("Hello There, Wassup?")
 
 
 def send_start(bot, update):
@@ -338,7 +336,7 @@ def send_settings(chat_id, user_id, user=False):
         if USER_SETTINGS:
             settings = "\n\n".join(
                 "*{}*:\n{}".format(mod.__mod_name__, mod.__user_settings__(user_id)) for mod in USER_SETTINGS.values())
-            dispatcher.bot.send_message(user_id, "These are your current settings:" + "\n\n" + settings,
+            dispatcher.bot.send_message(user_id, "These are your Present settings:" + "\n\n" + settings,
                                         parse_mode=ParseMode.MARKDOWN)
 
         else:
