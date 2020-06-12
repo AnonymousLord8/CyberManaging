@@ -30,11 +30,12 @@ PM_START_TEXT = """
 
 Hello    {}, My Name Is {} !
 
-I am a group management bot With Some Special Features.
+I Am Cyber Manager With Best Features To Manage You Group.
+ ["This Awesome Person"](t.me/lord_burner) Is My Creator
 To add me to your group click ["HERE"](t.me/=CyberXManagerbot?startgroup=botstart)
 You can find my list of available commands with /help.
  
-The support group chat is at [Anie Support](t.me/cybermanaging).
+The support group chat is at [Cyber Support](t.me/cybermanaging).
 
 """
 
