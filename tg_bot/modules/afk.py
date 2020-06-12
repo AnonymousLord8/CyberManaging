@@ -33,11 +33,11 @@ def no_longer_afk(bot: Bot, update: Update):
     res = sql.rm_afk(user.id)
     if res:
         options = [
-            '{} is here!',
+            '{} is here back with us!',
             '{} is back!',
             '{} is now in the chat!',
             '{} is awake!',
-            '{} is back online!',
+            '{} is back online with us!',
             '{} is finally here!',
             'Welcome back!, {}',
             'Where is {}?\nIn the chat!'
@@ -71,7 +71,7 @@ def reply_afk(bot: Bot, update: Update):
                 valid, reason = sql.check_afk_status(user_id)
                 if valid:
                     if not reason:
-                        res = "{} is AFK!".format(fst_name)
+                        res = "{} is Now in AFK Mode!".format(fst_name)
                     else:
                         res = "{} is AFK!\nReason:\n{}".format(fst_name, reason)
                     message.reply_text(res)
