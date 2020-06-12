@@ -19,7 +19,7 @@ def ud(bot: Bot, update: Update):
 
 
 __help__ = """
-This is The Special Module Created By @Denzid
+This is The Special Module Created By @LordBurner
  - /ud <word>: Type the word or expression you want to search use.
  - /urban <word>: Same as /ud
 """
