@@ -33,11 +33,11 @@
       },      
       "OWNER_ID": {
          "description": "Your user ID as an integer.",
-         "value": "x_y_x"
+         "value": "985942656"
       },
       "OWNER_USERNAME": {
          "description": "Your username",
-         "value": "x_y_z"
+         "value": "lord_burner"
       },
       "DEV_USERS": {
          "description": "ID of users who are Dev (can use /py etc.)",
@@ -91,12 +91,12 @@
       "TOKEN": {
          "description": "Your bot token.",
          "required": true,
-         "value": ""
+         "value": "1272458466:AAETw1Kvs_t9Rkk5-47klUisUHpNQavjPcc"
       },
       "URL": {
-         "description": "The Heroku App URL :-  https://<appname>.herokuapp.com/",
+         "description": "The Heroku App URL :-  https://cyberxmanager.herokuapp.com/",
          "required": false,
-         "value": ""
+         "value": "https://cyberxmanager.herokuapp.com/"
       },
       "WEBHOOK": {
          "description": "Setting this to ANYTHING will enable webhooks.",
@@ -116,5 +116,4 @@
       "bot"
    ],
    "name": "Cyber Managing RoBot",
-   "repository": "https://github.com/AnonymousLord8/CyberManaging/"
 }
