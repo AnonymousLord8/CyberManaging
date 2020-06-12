@@ -33,7 +33,7 @@
       },      
       "OWNER_ID": {
          "description": "Your user ID as an integer.",
-         "value": "985942656"
+         "value": "x_y_x"
       },
       "OWNER_USERNAME": {
          "description": "Your username",
@@ -116,5 +116,5 @@
       "bot"
    ],
    "logo": "https://avatarfiles.alphacoders.com/207/207588.jpg",
-   "name": "CyberXManager RoBot",
+   "name": "CyberManager RoBot",
 }
