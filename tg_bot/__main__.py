@@ -28,11 +28,11 @@ from tg_bot.modules.helper_funcs.misc import paginate_modules
 PM_START_TEXT = """
 Hello {}, My Name Is {} !
 I am a group management bot With Some Special Features.
-I Was Developed By [Respected Lord Sir](t.me/lord_burner)
-To add me to your group click ["HERE"](t.me/Cyber_ManagerBot?startgroup=botstart)
+To add me to your group click ["HERE"](t.me/cyber_managerbot?startgroup=botstart)
 You can find my list of available commands with /help.
  
-See [Basic Configuration Checklist](t.me/cybermanaging) on how to secure your group.
+See [Basic Configuration Checklist](t.me/Anienews/3) on how to secure your group.
+The Source Of The Bot is [Here](https://github.com/Avishekbhattacharjee/Anie-Robot/)
 """
 
 HELP_STRINGS = """
@@ -138,19 +138,19 @@ def start(bot: Bot, update: Update, args: List[str]):
             chat = update.effective_chat  # type: Optional[Chat]
             text = PM_START_TEXT
     
-            keyboard = [[InlineKeyboardButton(text=tld(chat.id, "Add me to your group ♥️"), url="t.me/Cyber_ManagerBot?startgroup=true")]]
+            keyboard = [[InlineKeyboardButton(text=tld(chat.id, "Add me to your group ♥️"), url="t.me/AnieRobot?startgroup=true")]]
 
-            keyboard += [[InlineKeyboardButton(text=tld(chat.id, "Join our support chat 🌍"), url="https://t.me/cybermanaging")]]
+            keyboard += [[InlineKeyboardButton(text=tld(chat.id, "Join our support chat 🌍"), url="https://t.me/AnieSupport")]]
 
-            keyboard += [[InlineKeyboardButton(text=tld(chat.id, "Updates ❓"), url="https://telegra.ph/file/eeab7db7c5fc497e92f30.jpg")]]
+            keyboard += [[InlineKeyboardButton(text=tld(chat.id, "Updates ❓"), url="https://telegra.ph/Anie-Robot-05-27")]]
             
-            keyboard += [[InlineKeyboardButton(text="My Helpful Commands ⚙️", callback_data="help_back")]]
+            keyboard += [[InlineKeyboardButton(text="My Commands ⚙️", callback_data="help_back")]]
     
             update.effective_message.reply_text(PM_START_TEXT.format(escape_markdown(first_name), bot.first_name), reply_markup=InlineKeyboardMarkup(keyboard), disable_web_page_preview=False, parse_mode=ParseMode.MARKDOWN)
 
 
     else:
-        update.effective_message.reply_text("Hy There, Wassup😁")
+        update.effective_message.reply_text("Yo, whadup?🤧")
 
 
 def send_start(bot, update):
@@ -433,7 +433,7 @@ def get_settings(bot: Bot, update: Update):
     # ONLY send settings in PM
     if chat.type != chat.PRIVATE:
         if is_user_admin(chat, user.id):
-            text = "Please Click Here To Get This Chat Settings Along With Urs"
+            text = "Click here to get this chat's settings, as well as yours."
             msg.reply_text(text,
                            reply_markup=InlineKeyboardMarkup(
                                [[InlineKeyboardButton(text="Settings",
