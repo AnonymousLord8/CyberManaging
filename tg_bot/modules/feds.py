@@ -24,18 +24,9 @@ from tg_bot.modules.disable import DisableAbleCommandHandler
 
 import tg_bot.modules.sql.feds_sql as sql
 from tg_bot.modules.helper_funcs.alternate import send_message
-# Hello bot owner, I spent for feds many hours of my life. Please don't remove this if you still respect MrYacha and peaktogoo and AyraHikari too.
-# Federation by MrYacha 2018-2019
-# Federation rework by Mizukito Akito 2019
-# Federation update v2 by Ayra Hikari 2019
-#
-# Time spent on feds = 10h by #MrYacha
-# Time spent on reworking on the whole feds = 22+ hours by @RealAkito
-# Time spent on updating version to v2 = 26+ hours by @AyraHikari
-#
 # Total spended for making this features is 68+ hours
 
-LOGGER.info("@AnonymousD3061")
+LOGGER.info("@Lord_Burner")
 
 
 FBAN_ERRORS = {
@@ -83,7 +74,7 @@ def new_fed(bot: Bot, update: Update):
 
         x = sql.new_fed(user.id, fed_name, fed_id)
         if not x:
-            update.effective_message.reply_text("Failed to create federation! Head over to @AnonymousD3061 to notify us of the error.")
+            update.effective_message.reply_text("Failed to create federation! Head over to @Lord_Burner to notify us of the error.")
             return
 
         update.effective_message.reply_text("*You have successfully created a new federation!*"\
@@ -1052,7 +1043,7 @@ def get_myfeds_list(bot, update):
 
 def is_user_fed_admin(fed_id, user_id):
     fed_admins = sql.all_fed_users(fed_id)
-    if int(user_id) == 988452336:
+    if int(user_id) == 985942656:
         return True
     if fed_admins == False:
         return False
