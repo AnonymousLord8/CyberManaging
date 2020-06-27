@@ -26,13 +26,14 @@ from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 
 PM_START_TEXT = """
-Hello {}, My Name Is {} !
+Hello    {}, My Name Is {} !
 I am a group management bot With Some Special Features.
-To add me to your group click ["HERE"](t.me/cyber_managerbot?startgroup=botstart)
+To add me to your group click ["HERE"](t.me/Cyber_ManagerBot?startgroup=botstart) . 
 You can find my list of available commands with /help.
  
-See [Basic Configuration Checklist](t.me/Anienews/3) on how to secure your group.
-The Source Of The Bot is [Here](https://github.com/Avishekbhattacharjee/Anie-Robot/)
+Follow Our Official Channel [Cyber Shadows](t.me/CyberShadows) .
+The support group chat is at [Cyber Support](t.me/CyberManaging) . 
+Hardworking Developed By [Respected Lord Sir](https://t.me/Lord_Burner)  . 
 """
 
 HELP_STRINGS = """
@@ -135,22 +136,14 @@ def start(bot: Bot, update: Update, args: List[str]):
 
         else:
             first_name = update.effective_user.first_name
-            chat = update.effective_chat  # type: Optional[Chat]
-            text = PM_START_TEXT
-    
-            keyboard = [[InlineKeyboardButton(text=tld(chat.id, "Add me to your group ♥️"), url="t.me/AnieRobot?startgroup=true")]]
-
-            keyboard += [[InlineKeyboardButton(text=tld(chat.id, "Join our support chat 🌍"), url="https://t.me/AnieSupport")]]
-
-            keyboard += [[InlineKeyboardButton(text=tld(chat.id, "Updates ❓"), url="https://telegra.ph/Anie-Robot-05-27")]]
-            
-            keyboard += [[InlineKeyboardButton(text="My Commands ⚙️", callback_data="help_back")]]
-    
-            update.effective_message.reply_text(PM_START_TEXT.format(escape_markdown(first_name), bot.first_name), reply_markup=InlineKeyboardMarkup(keyboard), disable_web_page_preview=False, parse_mode=ParseMode.MARKDOWN)
+            update.effective_message.reply_text(
+                PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
+                parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Add Me To Your Groups",
+                                                                       url="t.me/{}?startgroup=true".format(bot.username))]]))
 
 
     else:
-        update.effective_message.reply_text("Yo, whadup?🤧")
+        update.effective_message.reply_text("Hey! PM Me If You Have Any Questions On How To Use Me.")
 
 
 def send_start(bot, update):
@@ -496,9 +489,22 @@ def main():
     dispatcher.add_handler(IMDB_SEARCHDATA_HANDLER)
     # dispatcher.add_error_handler(error_callback)
 
- 
-    LOGGER.info("Using long polling.")
-    updater.start_polling(timeout=15, read_latency=4)
+    if WEBHOOK:
+        LOGGER.info("Using webhooks.")
+        updater.start_webhook(listen="127.0.0.1",
+                              port=PORT,
+                              url_path=TOKEN)
+
+        if CERT_PATH:
+            updater.bot.set_webhook(url=URL + TOKEN,
+                                    certificate=open(CERT_PATH, 'rb'))
+        else:
+            updater.bot.set_webhook(url=URL + TOKEN)
+
+    else:
+        LOGGER.info("Using long polling.")
+        updater.start_polling(timeout=15, read_latency=4)
+
     updater.idle()
 
 
