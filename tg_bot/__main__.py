@@ -26,23 +26,17 @@ from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 
 PM_START_TEXT = """
-
-
-Hello    {}, My Name Is {} !
-
-I Am Cyber Manager With Best Features To Manage You Group.
- ["This Awesome Person"](t.me/lord_burner) Is My Creator
-To add me to your group click ["HERE"](t.me/=CyberXManagerbot?startgroup=botstart)
+Hello {}, My Name Is {} !
+I am a group management bot With Some Special Features.
+I Was Developed By [Respected Lord Sir](t.me/lord_burner)
+To add me to your group click ["HERE"](t.me/Cyber_ManagerBot?startgroup=botstart)
 You can find my list of available commands with /help.
  
-The support group chat is at [Cyber Support](t.me/cybermanaging).
-
+See [Basic Configuration Checklist](t.me/cybermanaging) on how to secure your group.
 """
 
 HELP_STRINGS = """
-
 Hello! my name *{}*.
-
 *Main* commands available:
  - /start: start the bot
  - /help: PM's you this message.
@@ -50,8 +44,6 @@ Hello! my name *{}*.
  - /settings:
    - in PM: will send you your settings for all supported modules.
    - in a group: will redirect you to pm, with all that chat's settings.
-
-
 {}
 And the following:
 """.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
@@ -143,14 +135,22 @@ def start(bot: Bot, update: Update, args: List[str]):
 
         else:
             first_name = update.effective_user.first_name
-            update.effective_message.reply_text(
-                PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
-                parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="ADD ME TO YOUR GROUP",
-                                                                       url="t.me/{}?startgroup=true".format(bot.username))]]))
+            chat = update.effective_chat  # type: Optional[Chat]
+            text = PM_START_TEXT
+    
+            keyboard = [[InlineKeyboardButton(text=tld(chat.id, "Add me to your group ♥️"), url="t.me/Cyber_ManagerBot?startgroup=true")]]
+
+            keyboard += [[InlineKeyboardButton(text=tld(chat.id, "Join our support chat 🌍"), url="https://t.me/cybermanaging")]]
+
+            keyboard += [[InlineKeyboardButton(text=tld(chat.id, "Updates ❓"), url="https://telegra.ph/file/eeab7db7c5fc497e92f30.jpg")]]
+            
+            keyboard += [[InlineKeyboardButton(text="My Helpful Commands ⚙️", callback_data="help_back")]]
+    
+            update.effective_message.reply_text(PM_START_TEXT.format(escape_markdown(first_name), bot.first_name), reply_markup=InlineKeyboardMarkup(keyboard), disable_web_page_preview=False, parse_mode=ParseMode.MARKDOWN)
 
 
     else:
-        update.effective_message.reply_text("Hello There, Wassup?")
+        update.effective_message.reply_text("Hy There, Wassup😁")
 
 
 def send_start(bot, update):
@@ -337,7 +337,7 @@ def send_settings(chat_id, user_id, user=False):
         if USER_SETTINGS:
             settings = "\n\n".join(
                 "*{}*:\n{}".format(mod.__mod_name__, mod.__user_settings__(user_id)) for mod in USER_SETTINGS.values())
-            dispatcher.bot.send_message(user_id, "These are your Present settings:" + "\n\n" + settings,
+            dispatcher.bot.send_message(user_id, "These are your current settings:" + "\n\n" + settings,
                                         parse_mode=ParseMode.MARKDOWN)
 
         else:
@@ -433,7 +433,7 @@ def get_settings(bot: Bot, update: Update):
     # ONLY send settings in PM
     if chat.type != chat.PRIVATE:
         if is_user_admin(chat, user.id):
-            text = "Click here to get this chat's settings, as well as yours."
+            text = "Please Click Here To Get This Chat Settings Along With Urs"
             msg.reply_text(text,
                            reply_markup=InlineKeyboardMarkup(
                                [[InlineKeyboardButton(text="Settings",
@@ -496,22 +496,9 @@ def main():
     dispatcher.add_handler(IMDB_SEARCHDATA_HANDLER)
     # dispatcher.add_error_handler(error_callback)
 
-    if WEBHOOK:
-        LOGGER.info("Using webhooks.")
-        updater.start_webhook(listen="127.0.0.1",
-                              port=PORT,
-                              url_path=TOKEN)
-
-        if CERT_PATH:
-            updater.bot.set_webhook(url=URL + TOKEN,
-                                    certificate=open(CERT_PATH, 'rb'))
-        else:
-            updater.bot.set_webhook(url=URL + TOKEN)
-
-    else:
-        LOGGER.info("Using long polling.")
-        updater.start_polling(timeout=15, read_latency=4)
-
+ 
+    LOGGER.info("Using long polling.")
+    updater.start_polling(timeout=15, read_latency=4)
     updater.idle()
 
 
